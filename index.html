@@ -750,90 +750,100 @@ async function enterFullscreen(containerEl) {
     <h3 style="color:var(--text);margin-bottom:8px;" data-aos="fade-up">
       <span class="it">Strategia di Branching</span><span class="en">Branching Strategy</span>
     </h3>
-    <div class="git-diagram" data-aos="fade-up">
+    <div class="git-graph-wrap" data-aos="fade-up">
+      <svg class="git-graph-svg" viewBox="0 0 925 200" xmlns="http://www.w3.org/2000/svg">
 
-      <!-- feat/* -->
-      <div class="git-branch b-feature">
-        <div class="git-dot"></div>
-        <div class="git-hline"></div>
-        <div class="git-commits">
-          <button class="git-c gg-commit" data-type="feat" data-hash="a1b2c3d"
-                  data-msg-it="feat: inizializzazione mappa OpenLayers"
-                  data-msg-en="feat: OpenLayers map initialization"></button>
-          <div class="git-cl"></div>
-          <button class="git-c gg-commit" data-type="feat" data-hash="e4f5g6h"
-                  data-msg-it="feat: marker colorati per tipo widget"
-                  data-msg-en="feat: color-coded markers per widget type"></button>
-          <div class="git-cl"></div>
-          <button class="git-c gg-commit" data-type="fix" data-hash="i7j8k9l"
-                  data-msg-it="fix: popup click su mobile viewport"
-                  data-msg-en="fix: popup click on mobile viewport"></button>
-        </div>
-        <span class="git-arrow">→</span>
-        <span class="git-label">feat/*</span>
-        <span class="git-desc"><span class="it">Feature isolate, apre PR su development</span><span class="en">Isolated features, opens PR to development</span></span>
-      </div>
+        <!-- HORIZONTAL BRANCH LINES -->
+        <line x1="50"  y1="155" x2="795" y2="155" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="115" y1="100" x2="730" y2="100" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="250" y1="45"  x2="395" y2="45"  stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="595" y1="45"  x2="665" y2="45"  stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round"/>
 
-      <!-- Bridge feat/* → development -->
-      <div class="git-bridge b-feature-bridge">
-        <div class="gmb-vline"></div>
-        <span class="gmb-pr">PR #8</span>
-        <span class="gmb-arrow">↓</span>
-      </div>
+        <!-- DIAGONAL CONNECTIONS -->
+        <line x1="50"  y1="155" x2="115" y2="100" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+        <line x1="185" y1="100" x2="250" y2="45"  stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+        <line x1="395" y1="45"  x2="460" y2="100" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+        <line x1="530" y1="100" x2="595" y2="45"  stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+        <line x1="665" y1="45"  x2="730" y2="100" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+        <line x1="730" y1="100" x2="795" y2="155" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
 
-      <!-- development -->
-      <div class="git-branch b-dev">
-        <div class="git-dot"></div>
-        <div class="git-hline"></div>
-        <div class="git-commits">
-          <button class="git-c gg-commit" data-type="chore" data-hash="7f3a1b2"
-                  data-msg-it="chore: struttura iniziale del progetto"
-                  data-msg-en="chore: initial project structure"></button>
-          <div class="git-cl"></div>
-          <button class="git-c git-c-merge gg-commit" data-type="merge" data-hash="c4d5e6f"
-                  data-msg-it="Merge PR #8 — feat/widget-mappa → development"
-                  data-msg-en="Merge PR #8 — feat/widget-mappa → development"></button>
-          <div class="git-cl"></div>
-          <button class="git-c gg-commit" data-type="feat" data-hash="9e1f3a4"
-                  data-msg-it="feat: integrazione telecamere Milestone XProtect"
-                  data-msg-en="feat: Milestone XProtect camera integration"></button>
-          <div class="git-cl"></div>
-          <button class="git-c gg-commit" data-type="fix" data-hash="b2c3d4e"
-                  data-msg-it="fix: layout dashboard responsivo mobile"
-                  data-msg-en="fix: responsive dashboard layout on mobile"></button>
-        </div>
-        <span class="git-arrow">→</span>
-        <span class="git-label">development</span>
-        <span class="git-desc"><span class="it">Integrazione continua, test, apre PR su release</span><span class="en">Continuous integration, testing, opens PR to release</span></span>
-      </div>
+        <!-- PR BADGES -->
+        <rect x="399" y="60" width="56" height="20" rx="10" fill="#8b5cf610" stroke="#8b5cf660" stroke-width="1"/>
+        <text x="427" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#c4b5fd" font-family="Inter,sans-serif">PR #8</text>
 
-      <!-- Bridge development → release -->
-      <div class="git-bridge b-dev-bridge">
-        <div class="gmb-vline"></div>
-        <span class="gmb-pr">PR #15</span>
-        <span class="gmb-arrow">↓</span>
-      </div>
+        <rect x="669" y="60" width="58" height="20" rx="10" fill="#8b5cf610" stroke="#8b5cf660" stroke-width="1"/>
+        <text x="698" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#c4b5fd" font-family="Inter,sans-serif">PR #15</text>
 
-      <!-- release -->
-      <div class="git-branch b-release">
-        <div class="git-dot"></div>
-        <div class="git-hline"></div>
-        <div class="git-commits">
-          <button class="git-c git-c-merge gg-commit" data-type="merge" data-hash="f0g1h2i"
-                  data-msg-it="Merge PR #15 — development → release"
-                  data-msg-en="Merge PR #15 — development → release"></button>
-          <div class="git-cl"></div>
-          <button class="git-c gg-commit" data-type="chore" data-hash="m3n4o5p"
-                  data-msg-it="chore(release): 1.1.0 — avvia pipeline CI/CD"
-                  data-msg-en="chore(release): 1.1.0 — triggers CI/CD pipeline"></button>
-          <div class="git-cl"></div>
-          <span class="git-cicd-tag">&#x1F680; CI/CD</span>
-        </div>
-        <span class="git-arrow">→</span>
-        <span class="git-label">release</span>
-        <span class="git-desc" style="color:#fcd34d;font-weight:600;"><span class="it">&#x1F680; Deploy in produzione, trigger CI/CD</span><span class="en">&#x1F680; Production deploy, CI/CD trigger</span></span>
-      </div>
+        <rect x="734" y="115" width="58" height="20" rx="10" fill="#f59e0b10" stroke="#f59e0b60" stroke-width="1"/>
+        <text x="763" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="#fcd34d" font-family="Inter,sans-serif">PR #22</text>
 
+        <!-- COMMITS -->
+        <circle class="gg-commit gc-release" cx="50"  cy="155" r="7"
+                data-type="chore" data-hash="c3d4e5f"
+                data-msg-it="chore: tag versione v1.0.0 — rilascio iniziale"
+                data-msg-en="chore: tag version v1.0.0 — initial release"/>
+
+        <circle class="gg-commit gc-dev" cx="115" cy="100" r="7"
+                data-type="chore" data-hash="a1b2c3d"
+                data-msg-it="chore: setup ambiente development e dipendenze base"
+                data-msg-en="chore: setup development environment and base dependencies"/>
+
+        <circle class="gg-commit gc-dev" cx="185" cy="100" r="7"
+                data-type="feat" data-hash="b2c3d4e"
+                data-msg-it="feat: implementazione base API sensori e autenticazione X-API-Key"
+                data-msg-en="feat: base sensor API and X-API-Key authentication implementation"/>
+
+        <circle class="gg-commit gc-feat" cx="250" cy="45" r="7"
+                data-type="feat" data-hash="d4e5f6a"
+                data-msg-it="feat: inizializzazione mappa OpenLayers con tile OSM"
+                data-msg-en="feat: OpenLayers map initialization with OSM tiles"/>
+
+        <circle class="gg-commit gc-feat" cx="320" cy="45" r="7"
+                data-type="feat" data-hash="e5f6a7b"
+                data-msg-it="feat: marker color-coded per tipo widget e alert visivi priorità"
+                data-msg-en="feat: color-coded markers by widget type and priority visual alerts"/>
+
+        <circle class="gg-commit gc-feat" cx="395" cy="45" r="7"
+                data-type="fix" data-hash="f6a7b8c"
+                data-msg-it="fix: correzione bounds mappa su resize e orientamento mobile"
+                data-msg-en="fix: map bounds fix on resize and mobile orientation"/>
+
+        <circle class="gg-commit gc-dev gg-merge-commit" cx="460" cy="100" r="8"
+                data-type="merge" data-hash="a7b8c9d"
+                data-msg-it="merge: PR #8 feat/mappa-openlayers → development"
+                data-msg-en="merge: PR #8 feat/mappa-openlayers → development"/>
+
+        <circle class="gg-commit gc-dev" cx="530" cy="100" r="7"
+                data-type="feat" data-hash="b8c9d0e"
+                data-msg-it="feat: integrazione fullscreen telecamere Milestone XProtect"
+                data-msg-en="feat: Milestone XProtect cameras fullscreen integration"/>
+
+        <circle class="gg-commit gc-feat" cx="595" cy="45" r="7"
+                data-type="feat" data-hash="c9d0e1f"
+                data-msg-it="feat: streaming SSE token-by-token con Claude API chatbot"
+                data-msg-en="feat: SSE token-by-token streaming with Claude API chatbot"/>
+
+        <circle class="gg-commit gc-feat" cx="665" cy="45" r="7"
+                data-type="fix" data-hash="d0e1f2a"
+                data-msg-it="fix: gestione errori timeout e retry streaming chatbot"
+                data-msg-en="fix: chatbot streaming timeout and retry error handling"/>
+
+        <circle class="gg-commit gc-dev gg-merge-commit" cx="730" cy="100" r="8"
+                data-type="merge" data-hash="e1f2a3b"
+                data-msg-it="merge: PR #15 feat/chatbot-ai → development"
+                data-msg-en="merge: PR #15 feat/chatbot-ai → development"/>
+
+        <circle class="gg-commit gc-release gg-merge-commit" cx="795" cy="155" r="8"
+                data-type="merge" data-hash="f2a3b4c"
+                data-msg-it="merge: PR #22 development → release v1.2.0"
+                data-msg-en="merge: PR #22 development → release v1.2.0"/>
+
+        <!-- BRANCH LABELS -->
+        <text x="820" y="49"  font-size="12" font-weight="700" fill="#8b5cf6" font-family="Inter,sans-serif">feat/*</text>
+        <text x="820" y="104" font-size="12" font-weight="700" fill="#f59e0b" font-family="Inter,sans-serif">development</text>
+        <text x="820" y="159" font-size="12" font-weight="700" fill="#10b981" font-family="Inter,sans-serif">release</text>
+
+      </svg>
     </div>
     <p class="git-hint" data-aos="fade-up"><span class="it">&#x2191; clicca un commit &#x25CF; per i dettagli</span><span class="en">&#x2191; click a commit &#x25CF; for details</span></p>
     <div id="commit-tooltip" class="commit-tooltip">
