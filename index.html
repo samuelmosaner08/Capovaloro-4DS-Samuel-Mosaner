@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aivia Platform — Elaborato di Tirocinio</title>
+  <title>Percorso di Tirocinio - Aivia Platform</title>
   <meta name="description" content="Elaborato finale di tirocinio: Aivia, piattaforma IoT per il monitoraggio urbano in tempo reale." />
 
   <!-- Google Fonts -->
@@ -60,7 +60,7 @@
   <div class="hero-bg"></div>
   <div class="container hero-content">
     <div class="hero-badge">
-      <span class="it">🎓 Elaborato di Tirocinio · Anno Scolastico 2025/2026</span>
+      <span class="it">🎓 Percorso di tirocinio · Anno Scolastico 2025/2026</span>
       <span class="en">🎓 Internship Report · Academic Year 2025/2026</span>
     </div>
 
@@ -72,8 +72,9 @@
     </p>
 
     <p class="hero-student">
-      <span class="it">[NOME STUDENTE] &nbsp;·&nbsp; 4ª [CLASSE] &nbsp;·&nbsp; [NOME ISTITUTO]</span>
-      <span class="en">[STUDENT NAME] &nbsp;·&nbsp; 4th Year &nbsp;·&nbsp; [SCHOOL NAME]</span>
+      <span class="it">Mosaner Samuel Kailash &nbsp;·&nbsp; 4ª DS &nbsp;·&nbsp; ITT M. Buonarroti</span>
+      <span class="en">Mosaner Samuel Kailash &nbsp;·&nbsp; 4ª DS &nbsp;·&nbsp; ITT M. Buonarroti</span>
+      <span class="it"> &nbsp;·&nbsp; Tutor: Giuseppe Cusati  &nbsp;·&nbsp; Azienda: Ithel srl</span>
     </p>
 
     <div class="tech-tags">
@@ -674,7 +675,7 @@ async function enterFullscreen(containerEl) {
     <div data-aos="fade-up">
       <span class="section-label"><span class="it">DevOps</span><span class="en">DevOps</span></span>
       <h2 class="section-title"><span class="it">Workflow di Sviluppo e Deploy</span><span class="en">Development &amp; Deployment Workflow</span></h2>
-      <p class="section-sub"><span class="it">Il progetto segue un branching strategy strutturato con tre ambienti distinti (test, staging, produzione) e una pipeline CI/CD automatizzata su GitHub Actions.</span><span class="en">The project follows a structured branching strategy with three distinct environments (test, staging, production) and an automated CI/CD pipeline on GitHub Actions.</span></p>
+      <p class="section-sub"><span class="it">Il progetto usa tre branch principali: <code>feat/*</code> per sviluppo isolato delle funzionalità, <code>development</code> per l'integrazione continua, e <code>release</code> per il deploy automatico in produzione via GitHub Actions.</span><span class="en">The project uses three main branches: <code>feat/*</code> for isolated feature development, <code>development</code> for continuous integration, and <code>release</code> for automatic production deploy via GitHub Actions.</span></p>
     </div>
 
     <!-- Git branches -->
@@ -682,43 +683,97 @@ async function enterFullscreen(containerEl) {
       <span class="it">Strategia di Branching</span><span class="en">Branching Strategy</span>
     </h3>
     <div class="git-diagram" data-aos="fade-up">
+
+      <!-- feat/* -->
       <div class="git-branch b-feature">
         <div class="git-dot"></div>
         <div class="git-hline"></div>
         <div class="git-commits">
-          <div class="git-c"></div><div class="git-cl"></div>
-          <div class="git-c"></div><div class="git-cl"></div>
-          <div class="git-c"></div>
+          <button class="git-c gg-commit" data-type="feat" data-hash="a1b2c3d"
+                  data-msg-it="feat: inizializzazione mappa OpenLayers"
+                  data-msg-en="feat: OpenLayers map initialization"></button>
+          <div class="git-cl"></div>
+          <button class="git-c gg-commit" data-type="feat" data-hash="e4f5g6h"
+                  data-msg-it="feat: marker colorati per tipo widget"
+                  data-msg-en="feat: color-coded markers per widget type"></button>
+          <div class="git-cl"></div>
+          <button class="git-c gg-commit" data-type="fix" data-hash="i7j8k9l"
+                  data-msg-it="fix: popup click su mobile viewport"
+                  data-msg-en="fix: popup click on mobile viewport"></button>
         </div>
         <span class="git-arrow">→</span>
         <span class="git-label">feat/*</span>
-        <span class="git-desc"><span class="it">Sviluppo feature isolate, merge su development</span><span class="en">Isolated feature development, merged into development</span></span>
+        <span class="git-desc"><span class="it">Feature isolate, apre PR su development</span><span class="en">Isolated features, opens PR to development</span></span>
       </div>
+
+      <!-- Bridge feat/* → development -->
+      <div class="git-bridge b-feature-bridge">
+        <div class="gmb-vline"></div>
+        <span class="gmb-pr">PR #8</span>
+        <span class="gmb-arrow">↓</span>
+      </div>
+
+      <!-- development -->
       <div class="git-branch b-dev">
         <div class="git-dot"></div>
         <div class="git-hline"></div>
         <div class="git-commits">
-          <div class="git-c"></div><div class="git-cl"></div>
-          <div class="git-c"></div><div class="git-cl"></div>
-          <div class="git-c"></div><div class="git-cl"></div>
-          <div class="git-c"></div>
+          <button class="git-c gg-commit" data-type="chore" data-hash="7f3a1b2"
+                  data-msg-it="chore: struttura iniziale del progetto"
+                  data-msg-en="chore: initial project structure"></button>
+          <div class="git-cl"></div>
+          <button class="git-c git-c-merge gg-commit" data-type="merge" data-hash="c4d5e6f"
+                  data-msg-it="Merge PR #8 — feat/widget-mappa → development"
+                  data-msg-en="Merge PR #8 — feat/widget-mappa → development"></button>
+          <div class="git-cl"></div>
+          <button class="git-c gg-commit" data-type="feat" data-hash="9e1f3a4"
+                  data-msg-it="feat: integrazione telecamere Milestone XProtect"
+                  data-msg-en="feat: Milestone XProtect camera integration"></button>
+          <div class="git-cl"></div>
+          <button class="git-c gg-commit" data-type="fix" data-hash="b2c3d4e"
+                  data-msg-it="fix: layout dashboard responsivo mobile"
+                  data-msg-en="fix: responsive dashboard layout on mobile"></button>
         </div>
         <span class="git-arrow">→</span>
         <span class="git-label">development</span>
-        <span class="git-desc"><span class="it">Integrazione continua, ambiente di test</span><span class="en">Continuous integration, test environment</span></span>
+        <span class="git-desc"><span class="it">Integrazione continua, test, apre PR su release</span><span class="en">Continuous integration, testing, opens PR to release</span></span>
       </div>
+
+      <!-- Bridge development → release -->
+      <div class="git-bridge b-dev-bridge">
+        <div class="gmb-vline"></div>
+        <span class="gmb-pr">PR #15</span>
+        <span class="gmb-arrow">↓</span>
+      </div>
+
+      <!-- release -->
       <div class="git-branch b-release">
         <div class="git-dot"></div>
         <div class="git-hline"></div>
         <div class="git-commits">
-          <div class="git-c"></div><div class="git-cl"></div>
-          <div class="git-c"></div><div class="git-cl"></div>
-          <div class="git-c"></div>
+          <button class="git-c git-c-merge gg-commit" data-type="merge" data-hash="f0g1h2i"
+                  data-msg-it="Merge PR #15 — development → release"
+                  data-msg-en="Merge PR #15 — development → release"></button>
+          <div class="git-cl"></div>
+          <button class="git-c gg-commit" data-type="chore" data-hash="m3n4o5p"
+                  data-msg-it="chore(release): 1.1.0 — avvia pipeline CI/CD"
+                  data-msg-en="chore(release): 1.1.0 — triggers CI/CD pipeline"></button>
+          <div class="git-cl"></div>
+          <span class="git-cicd-tag">&#x1F680; CI/CD</span>
         </div>
         <span class="git-arrow">→</span>
         <span class="git-label">release</span>
-        <span class="git-desc" style="color:#fcd34d;font-weight:600;"><span class="it">🚀 Deploy in produzione, trigger CI/CD</span><span class="en">🚀 Production deploy, CI/CD trigger</span></span>
+        <span class="git-desc" style="color:#fcd34d;font-weight:600;"><span class="it">&#x1F680; Deploy in produzione, trigger CI/CD</span><span class="en">&#x1F680; Production deploy, CI/CD trigger</span></span>
       </div>
+
+    </div>
+    <p class="git-hint" data-aos="fade-up"><span class="it">&#x2191; clicca un commit &#x25CF; per i dettagli</span><span class="en">&#x2191; click a commit &#x25CF; for details</span></p>
+    <div id="commit-tooltip" class="commit-tooltip">
+      <div class="ct-top">
+        <span class="ct-type-badge"></span>
+        <code class="ct-hash"></code>
+      </div>
+      <p class="ct-msg"></p>
     </div>
 
     <div class="divider" data-aos="fade-up"></div>
@@ -913,14 +968,14 @@ async function enterFullscreen(containerEl) {
   <div class="container">
     <div class="footer-logo">Aivia Platform</div>
     <div class="footer-bar"></div>
-    <div class="footer-name">[NOME STUDENTE]</div>
+    <div class="footer-name">Mosaner Samuel Kailash</div>
     <p class="footer-info">
-      <span class="it">Anno Scolastico 2025/2026 &nbsp;·&nbsp; 4ª [CLASSE] &nbsp;·&nbsp; [NOME ISTITUTO]</span>
-      <span class="en">Academic Year 2025/2026 &nbsp;·&nbsp; 4th Year &nbsp;·&nbsp; [SCHOOL NAME]</span>
+      <span class="it">Anno Scolastico 2025/2026 &nbsp;·&nbsp; 4ª DS &nbsp;·&nbsp; ITT . M. Buonarroti</span>
+      <span class="en">Academic Year 2025/2026 &nbsp;·&nbsp; 4th DS &nbsp;·&nbsp; ITT . M. Buonarroti</span>
     </p>
     <p class="footer-credit">
-      <span class="it">Tirocinio svolto nel periodo [DATA INIZIO] — [DATA FINE]</span>
-      <span class="en">Internship period: [START DATE] — [END DATE]</span>
+      <span class="it">Tirocinio svolto nel periodo 25/05/2026 — 19/06/2026</span>
+      <span class="en">Internship period: 25/05/2026 — 19/06/2026</span>
     </p>
     <p class="footer-credit" style="margin-top:6px;">
       <span class="it">Elaborato realizzato con HTML · CSS · JavaScript</span>

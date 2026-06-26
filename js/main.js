@@ -90,12 +90,55 @@ function initSmoothScroll() {
   });
 }
 
+// ── Git Graph Tooltips ────────────────────────────────────────
+function initGitGraph() {
+  const tooltip = document.getElementById('commit-tooltip');
+  if (!tooltip) return;
+
+  document.querySelectorAll('.gg-commit').forEach(node => {
+    node.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const msg = this.getAttribute('data-msg-' + currentLang) || this.getAttribute('data-msg-it') || '';
+      const hash = this.getAttribute('data-hash') || '';
+      const type = this.getAttribute('data-type') || 'commit';
+
+      tooltip.querySelector('.ct-hash').textContent = hash;
+      tooltip.querySelector('.ct-msg').textContent = msg;
+      const badge = tooltip.querySelector('.ct-type-badge');
+      badge.textContent = type;
+      badge.className = 'ct-type-badge ct-type-' + type;
+
+      const r = this.getBoundingClientRect();
+      const tipW = 280;
+      let lx = r.left + r.width / 2 - tipW / 2;
+      lx = Math.max(8, Math.min(lx, window.innerWidth - tipW - 8));
+      const ty = r.top < 100 ? r.bottom + 10 : r.top - 90;
+      tooltip.style.left = lx + 'px';
+      tooltip.style.top = ty + 'px';
+
+      document.querySelectorAll('.gg-commit').forEach(c => c.classList.remove('gg-active'));
+      this.classList.add('gg-active');
+      tooltip.classList.add('visible');
+    });
+  });
+
+  document.addEventListener('click', () => {
+    tooltip.classList.remove('visible');
+    document.querySelectorAll('.gg-commit').forEach(c => c.classList.remove('gg-active'));
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') tooltip.classList.remove('visible');
+  });
+}
+
 // ── Init ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   setLang(currentLang);
   applyTheme();
   initSkillBars();
   initSmoothScroll();
+  initGitGraph();
 
   window.addEventListener('scroll', onScroll, { passive: true });
 

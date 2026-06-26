@@ -331,7 +331,10 @@ pre[class*="language-"] {
 .git-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid; flex-shrink: 0; }
 .git-hline { height: 2px; width: 32px; opacity: 0.35; }
 .git-commits { display: flex; align-items: center; gap: 6px; flex: 1; }
-.git-c { width: 10px; height: 10px; border-radius: 50%; opacity: 0.6; }
+.git-c { width: 10px; height: 10px; border-radius: 50%; border: 2px solid; box-sizing: border-box; opacity: 0.85; }
+button.git-c { padding: 0; cursor: pointer; background: none; outline: none; }
+button.git-c:focus-visible { outline: 2px dashed; outline-offset: 3px; }
+.git-c-merge { width: 14px !important; height: 14px !important; border-width: 2.5px !important; opacity: 1 !important; }
 .git-cl { height: 2px; flex: 1; max-width: 20px; opacity: 0.2; }
 .git-arrow { font-size: 0.9rem; margin: 0 8px; }
 .git-label { font-size: 0.8rem; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-btn); white-space: nowrap; }
@@ -513,3 +516,124 @@ body.light-mode .pipe-step { background: #fff; }
   .grid-3 { grid-template-columns: 1fr; }
   .tech-tags .tag { font-size: 0.72rem; padding: 4px 10px; }
 }
+
+/* === Git Bridge (connessioni tra branch) === */
+.git-diagram { gap: 4px; }
+.git-bridge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 78px;
+}
+.gmb-vline { width: 2px; height: 28px; border-radius: 1px; flex-shrink: 0; }
+.gmb-pr {
+  font-size: 0.7rem; font-weight: 700;
+  padding: 2px 10px; border-radius: 100px; white-space: nowrap;
+}
+.gmb-arrow { font-size: 0.85rem; font-weight: 700; }
+.b-feature-bridge .gmb-vline { background: #8b5cf6; }
+.b-feature-bridge .gmb-pr { color: #c4b5fd; border: 1px solid #8b5cf650; background: #8b5cf610; }
+.b-feature-bridge .gmb-arrow { color: #8b5cf6; }
+.b-dev-bridge .gmb-vline { background: #f59e0b; }
+.b-dev-bridge .gmb-pr { color: #fcd34d; border: 1px solid #f59e0b50; background: #f59e0b10; }
+.b-dev-bridge .gmb-arrow { color: #f59e0b; }
+
+/* CI/CD inline badge */
+.git-cicd-tag {
+  font-size: 0.68rem; font-weight: 600;
+  padding: 2px 8px; border-radius: 100px;
+  background: #10b98115; border: 1px solid #10b98150; color: #6ee7b7;
+  white-space: nowrap; margin-left: 4px;
+}
+
+/* Hint text under diagram */
+.git-hint { font-size: 0.75rem; color: var(--text-dim); margin: 4px 0 0; font-style: italic; opacity: 0.7; }
+
+/* === Git Graph SVG (unused after horizontal refactor, keeping tooltip styles) === */
+#gitgraph-container { overflow-x: auto; }
+#gitgraph-svg { width: 100%; min-width: 420px; max-width: 700px; display: block; margin: 0 auto; }
+
+.gg-commit {
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.gg-commit:hover { transform: scale(1.5); filter: brightness(1.5); }
+.gg-commit.gg-active {
+  transform: scale(1.25);
+  filter: brightness(1.8) drop-shadow(0 0 4px rgba(255,255,255,0.3));
+}
+
+.gg-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; }
+.gg-label-feat { fill: #c4b5fd; }
+.gg-label-dev  { fill: #93c5fd; }
+.gg-label-rel  { fill: #fcd34d; }
+.gg-branch-name { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #8b5cf6; opacity: 0.75; }
+.gg-hash-label  { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #475569; }
+.gg-pr-badge  { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; }
+.gg-pr-feat   { fill: #c4b5fd; }
+.gg-pr-rel    { fill: #fcd34d; }
+.gg-cicd-badge  { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; fill: #6ee7b7; }
+.gg-legend-text { font-family: 'Inter', sans-serif; font-size: 10px; fill: #64748b; }
+.gg-hint-text   { font-family: 'Inter', sans-serif; font-size: 10px; fill: #475569; font-style: italic; }
+
+@media (max-width: 480px) { .gg-hash-label { display: none; } }
+
+/* Commit tooltip */
+.commit-tooltip {
+  position: fixed;
+  z-index: 9999;
+  background: #1e2035;
+  border: 1px solid rgba(79,70,229,0.4);
+  border-radius: 10px;
+  padding: 12px 16px;
+  width: 280px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.commit-tooltip.visible { opacity: 1; }
+.ct-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.ct-hash {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.06);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.ct-type-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.ct-type-feat  { background: #4f46e520; color: #818cf8; border: 1px solid #4f46e540; }
+.ct-type-fix   { background: #ef444420; color: #f87171; border: 1px solid #ef444440; }
+.ct-type-chore { background: #64748b20; color: #94a3b8; border: 1px solid #64748b40; }
+.ct-type-merge { background: #8b5cf620; color: #c4b5fd; border: 1px solid #8b5cf640; }
+.ct-msg {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.45;
+  word-break: break-all;
+}
+
+body.light-mode .commit-tooltip { background: #ffffff; border-color: rgba(79,70,229,0.2); box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+body.light-mode .ct-hash { background: rgba(0,0,0,0.05); }
+body.light-mode .gg-hash-label  { fill: #94a3b8; }
+body.light-mode .gg-legend-text { fill: #64748b; }
+body.light-mode .gg-hint-text   { fill: #94a3b8; }
+body.light-mode .gg-label-feat  { fill: #7c3aed; }
+body.light-mode .gg-label-dev   { fill: #1d4ed8; }
+body.light-mode .gg-label-rel   { fill: #b45309; }
+body.light-mode .gg-pr-feat     { fill: #7c3aed; }
+body.light-mode .gg-pr-rel      { fill: #b45309; }
+body.light-mode .gg-cicd-badge  { fill: #065f46; }
+body.light-mode .gg-branch-name { fill: #7c3aed; }
