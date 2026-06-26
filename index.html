@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aivia Platform — Elaborato di Tirocinio</title>
+  <meta name="description" content="Elaborato finale di tirocinio: Aivia, piattaforma IoT per il monitoraggio urbano in tempo reale." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS - Animate On Scroll -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <!-- Prism.js - Syntax Highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="lang-it">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  NAVBAR                                                   -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="#hero" class="nav-brand">
+      <span class="brand-dot"></span>
+      Aivia
+    </a>
+
+    <div class="nav-links" id="mobile-menu">
+      <a href="#progetto" class="nav-link"><span class="it">Progetto</span><span class="en">Project</span></a>
+      <a href="#architettura" class="nav-link"><span class="it">Architettura</span><span class="en">Architecture</span></a>
+      <a href="#stack" class="nav-link">Stack</a>
+      <a href="#dati" class="nav-link"><span class="it">Dati</span><span class="en">Data</span></a>
+      <a href="#sensori" class="nav-link"><span class="it">Sensori</span><span class="en">Sensors</span></a>
+      <a href="#telecamere" class="nav-link"><span class="it">Telecamere</span><span class="en">Cameras</span></a>
+      <a href="#dashboard" class="nav-link">Dashboard</a>
+      <a href="#mappa" class="nav-link"><span class="it">Mappa</span><span class="en">Map</span></a>
+      <a href="#deploy" class="nav-link">Deploy</a>
+      <a href="#competenze" class="nav-link"><span class="it">Competenze</span><span class="en">Skills</span></a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle theme">☀️</button>
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  1. HERO                                                  -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="hero" class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="it">🎓 Elaborato di Tirocinio · Anno Scolastico 2025/2026</span>
+      <span class="en">🎓 Internship Report · Academic Year 2025/2026</span>
+    </div>
+
+    <h1>Aivia <span class="accent">Platform</span></h1>
+
+    <p class="hero-sub">
+      <span class="it">Piattaforma IoT per il monitoraggio urbano in tempo reale</span>
+      <span class="en">IoT Platform for Real-Time Urban Monitoring</span>
+    </p>
+
+    <p class="hero-student">
+      <span class="it">[NOME STUDENTE] &nbsp;·&nbsp; 4ª [CLASSE] &nbsp;·&nbsp; [NOME ISTITUTO]</span>
+      <span class="en">[STUDENT NAME] &nbsp;·&nbsp; 4th Year &nbsp;·&nbsp; [SCHOOL NAME]</span>
+    </p>
+
+    <div class="tech-tags">
+      <span class="tag">React 18</span>
+      <span class="tag">Next.js 14</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">GraphQL</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">Docker</span>
+      <span class="tag">Socket.IO</span>
+    </div>
+
+    <a href="#progetto" class="btn-primary">
+      <span class="it">Esplora il progetto ↓</span>
+      <span class="en">Explore the project ↓</span>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  2. IL PROGETTO                                           -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="progetto">
+  <div class="container">
+    <div data-aos="fade-up">
+      <span class="section-label"><span class="it">Il progetto</span><span class="en">The project</span></span>
+      <h2 class="section-title">Aivia Platform</h2>
+      <p class="section-sub">
+        <span class="it">Aivia è una piattaforma web full-stack per il monitoraggio urbano in tempo reale. Centralizza dati provenienti da sensori eterogenei — telecamere di sorveglianza, sensori meteo, semafori intelligenti, contatori di persone, monitor di parcheggi e bidoni — in un'unica dashboard interattiva e configurabile.</span>
+        <span class="en">Aivia is a full-stack web platform for real-time urban monitoring. It centralizes data from heterogeneous sensors — surveillance cameras, weather stations, smart traffic lights, people counters, parking monitors and trash bins — in a single interactive, configurable dashboard.</span>
+      </p>
+    </div>
+
+    <div class="grid-3" data-aos="fade-up" data-aos-delay="100">
+      <div class="feature-card">
+        <span class="card-icon">📷</span>
+        <div class="card-title"><span class="it">Telecamere IP</span><span class="en">IP Cameras</span></div>
+        <p class="card-desc"><span class="it">Integrazione con Milestone XProtect VMS: streaming live, riproduzione con controllo velocità e navigazione temporale.</span><span class="en">Integration with Milestone XProtect VMS: live streaming, variable-speed playback and timestamp navigation.</span></p>
+      </div>
+      <div class="feature-card">
+        <span class="card-icon">📡</span>
+        <div class="card-title"><span class="it">Sensori IoT</span><span class="en">IoT Sensors</span></div>
+        <p class="card-desc"><span class="it">Raccolta dati da sensori fisici via REST API. Supporto a 9+ tipi di metrica: parcheggi, persone, meteo, traffico, bidoni, oscillazioni.</span><span class="en">Data collection from physical sensors via REST API. Supports 9+ metric types: parking, people, weather, traffic, bins, oscillations.</span></p>
+      </div>
+      <div class="feature-card">
+        <span class="card-icon">🗺️</span>
+        <div class="card-title"><span class="it">Mappa Geografica</span><span class="en">Geographic Map</span></div>
+        <p class="card-desc"><span class="it">OpenLayers con tile OpenStreetMap, marker interattivi color-coded per priorità alert, fullscreen e modalità preview.</span><span class="en">OpenLayers with OSM tiles, interactive markers color-coded by alert priority, fullscreen and preview mode.</span></p>
+      </div>
+      <div class="feature-card">
+        <span class="card-icon">🔔</span>
+        <div class="card-title"><span class="it">Notifiche Automatiche</span><span class="en">Automatic Alerts</span></div>
+        <p class="card-desc"><span class="it">Alert configurabili con soglie per ogni metrica. Invio via Firebase push, email (SendGrid/AWS SES), SMS (AWS SNS) e webhook.</span><span class="en">Configurable threshold alerts for every metric. Delivery via Firebase push, email (SendGrid/AWS SES), SMS (AWS SNS) and webhooks.</span></p>
+      </div>
+      <div class="feature-card">
+        <span class="card-icon">📊</span>
+        <div class="card-title"><span class="it">Dashboard Configurabile</span><span class="en">Configurable Dashboard</span></div>
+        <p class="card-desc"><span class="it">15+ tipi di widget, layout drag-and-drop, responsive mobile, dark mode e aggiornamento real-time con Socket.IO.</span><span class="en">15+ widget types, drag-and-drop layout, mobile responsive, dark mode and real-time updates via Socket.IO.</span></p>
+      </div>
+      <div class="feature-card">
+        <span class="card-icon">🤖</span>
+        <div class="card-title"><span class="it">AI Assistant</span><span class="en">AI Assistant</span></div>
+        <p class="card-desc"><span class="it">Chat AI integrata con Claude (Anthropic) e GPT (OpenAI) tramite Socket.IO, con streaming delle risposte in tempo reale.</span><span class="en">Integrated AI chat with Claude (Anthropic) and GPT (OpenAI) via Socket.IO with real-time response streaming.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  3. ARCHITETTURA DEL SISTEMA                              -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="architettura">
+  <div class="container">
+    <div data-aos="fade-up">
+      <span class="section-label"><span class="it">Architettura</span><span class="en">Architecture</span></span>
+      <h2 class="section-title"><span class="it">Architettura del Sistema</span><span class="en">System Architecture</span></h2>
+      <p class="section-sub">
+        <span class="it">Il sistema è composto da tre layer distinti: un frontend Next.js, un backend Node.js con tre server concorrenti, e un database PostgreSQL. L'architettura separa le responsabilità: GraphQL per le query, REST per l'ingestion dei sensori, Socket.IO per il real-time.</span>
+        <span class="en">The system has three distinct layers: a Next.js frontend, a Node.js backend running three concurrent servers, and a PostgreSQL database. The architecture separates concerns: GraphQL for queries, REST for sensor ingestion, Socket.IO for real-time.</span>
+      </p>
+    </div>
+
+    <!-- Diagramma architettura -->
+    <div class="arch-diagram" data-aos="fade-up" data-aos-delay="100">
+      <!-- Browser -->
+      <div class="arch-row">
+        <div class="arch-box client">
+          🌐 <span class="it">Browser / App Mobile</span><span class="en">Browser / Mobile App</span>
+        </div>
+      </div>
+
+      <div class="arch-connector">
+        <div class="line"></div>
+        <div class="label">HTTPS</div>
+        <div class="arrow">↕</div>
+      </div>
+
+      <!-- Frontend -->
+      <div class="arch-row">
+        <div class="arch-box frontend">
+          ⚛️ Next.js Frontend &nbsp;<span style="color:#94a3b8;font-size:0.78rem">:3000</span>
+        </div>
+      </div>
+
+      <div class="arch-connector">
+        <div class="line"></div>
+        <div class="label">GraphQL · REST · WebSocket</div>
+        <div class="arrow">↕</div>
+      </div>
+
+      <!-- Backend 3 server -->
+      <div class="arch-row">
+        <div class="arch-box backend" style="padding:20px 28px;">
+          <div style="font-weight:700;color:#f8fafc;margin-bottom:12px;font-size:0.9rem;">
+            🟢 Backend Node.js
+          </div>
+          <div class="arch-server-group">
+            <div class="arch-server">
+              <span>🔷 Apollo GraphQL — <span class="it">query dati</span><span class="en">data queries</span></span>
+              <span class="port">:4000</span>
+            </div>
+            <div class="arch-server">
+              <span>🔹 REST API — <span class="it">ingestion sensori</span><span class="en">sensor ingestion</span></span>
+              <span class="port">:4001</span>
+            </div>
+            <div class="arch-server">
+              <span>⚡ Socket.IO — <span class="it">aggiornamenti real-time</span><span class="en">real-time updates</span></span>
+              <span class="port">:4002</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arch-connector">
+        <div class="line"></div>
+        <div class="label">SQL (pg)</div>
+        <div class="arrow">↕</div>
+      </div>
+
+      <!-- Database -->
+      <div class="arch-row">
+        <div class="arch-box db">
+          🐘 PostgreSQL &nbsp;<span style="color:#94a3b8;font-size:0.78rem">JSONB · Time-series · Soft delete</span>
+        </div>
+      </div>
+
+      <div class="arch-connector">
+        <div class="line"></div>
+        <div class="label">HTTP / SDK / API</div>
+        <div class="arrow">↕</div>
+      </div>
+
+      <!-- Servizi esterni -->
+      <div class="arch-row" style="gap:10px;flex-wrap:wrap;justify-content:center;">
+        <div class="arch-box external">📷 Milestone XProtect</div>
+        <div class="arch-box external">☁️ AWS S3/SES/SNS</div>
+        <div class="arch-box external">🔥 Firebase FCM</div>
+        <div class="arch-box external">📊 Zabbix</div>
+        <div class="arch-box external">🤖 Claude / OpenAI</div>
+      </div>
+    </div>
+
+    <!-- Pattern chiave -->
+    <div class="divider"></div>
+    <h3 data-aos="fade-up" style="margin-bottom:20px;color:var(--text)">
+      <span class="it">Pattern Architetturali Chiave</span><span class="en">Key Architectural Patterns</span>
+    </h3>
+    <div class="grid-3" data-aos="fade-up" data-aos-delay="100">
+      <div class="card">
+        <div class="card-title">🔧 QueryBuilder</div>
+        <p class="card-desc"><span class="it">Astrazione fluente su PostgreSQL: query parametrizzate, conversione automatica snake_case↔camelCase, soft delete implicito (<code>deleted_on IS NULL</code>), raggruppamento audit fields.</span><span class="en">Fluent abstraction over PostgreSQL: parameterized queries, automatic snake_case↔camelCase conversion, implicit soft delete (<code>deleted_on IS NULL</code>), audit fields grouping.</span></p>
+      </div>
+      <div class="card">
+        <div class="card-title">📦 JSONB Eterogeneo</div>
+        <p class="card-desc"><span class="it">Il campo <code>details JSONB</code> nei widget evita uno schema rigido per 15+ tipi diversi. Ogni tipo widget ha la propria struttura, interrogabile con operatori PostgreSQL (<code>->></code>, <code>@></code>).</span><span class="en">The <code>details JSONB</code> field on widgets avoids a rigid schema for 15+ types. Each widget type has its own structure, queryable with PostgreSQL operators (<code>->></code>, <code>@></code>).</span></p>
+      </div>
+      <div class="card">
+        <div class="card-title">🗑️ Soft Delete</div>
+        <p class="card-desc"><span class="it">I record non vengono mai cancellati fisicamente: il campo <code>deleted_on</code> viene impostato al timestamp corrente. Il QueryBuilder aggiunge automaticamente <code>AND deleted_on IS NULL</code> ad ogni query.</span><span class="en">Records are never physically deleted: <code>deleted_on</code> is set to the current timestamp. QueryBuilder automatically appends <code>AND deleted_on IS NULL</code> to every query.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  4. STACK TECNOLOGICO                                     -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="stack">
+  <div class="container">
+    <div data-aos="fade-up">
+      <span class="section-label"><span class="it">Tecnologie</span><span class="en">Technologies</span></span>
+      <h2 class="section-title"><span class="it">Stack Tecnologico</span><span class="en">Technology Stack</span></h2>
+      <p class="section-sub"><span class="it">Ecosistema moderno TypeScript-first, dal frontend al deploy.</span><span class="en">Modern TypeScript-first ecosystem, from frontend to deployment.</span></p>
+    </div>
+
+    <!-- Frontend -->
+    <div class="tech-category" data-aos="fade-up">
+      <span class="cat-badge cat-frontend">⚛️ Frontend</span>
+      <div class="grid-4">
+        <div class="tech-card"><img src="assets/icons/react.svg" class="tech-icon-img" alt="React"><div><div class="tech-name">React 18</div><div class="tech-desc"><span class="it">Componenti funzionali, hooks, concurrent mode</span><span class="en">Functional components, hooks, concurrent mode</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/nextjs.svg" class="tech-icon-img invert-dark" alt="Next.js"><div><div class="tech-name">Next.js 14</div><div class="tech-desc"><span class="it">App Router, SSR, middleware i18n</span><span class="en">App Router, SSR, i18n middleware</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/typescript.svg" class="tech-icon-img" alt="TypeScript"><div><div class="tech-name">TypeScript 5.6</div><div class="tech-desc"><span class="it">Tipizzazione statica completa</span><span class="en">Full static typing</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/tailwind-svgrepo-com.svg" class="tech-icon-img" alt="Tailwind CSS"><div><div class="tech-name">Tailwind CSS 3.4</div><div class="tech-desc"><span class="it">Utility-first, dark mode, responsive</span><span class="en">Utility-first, dark mode, responsive</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/chartjs.svg" class="tech-icon-img" alt="Chart.js"><div><div class="tech-name">Chart.js 4.4</div><div class="tech-desc"><span class="it">Grafici bar, line, scatter</span><span class="en">Bar, line, scatter charts</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/openLayers.svg" class="tech-icon-img" alt="OpenLayers"><div><div class="tech-name">OpenLayers 10</div><div class="tech-desc"><span class="it">Mappe OSM, marker, layer vettoriali</span><span class="en">OSM maps, markers, vector layers</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/zustand-plain.svg" class="tech-icon-img" alt="Zustand"><div><div class="tech-name">Zustand 4.5</div><div class="tech-desc"><span class="it">State management leggero</span><span class="en">Lightweight state management</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/apollo.png" class="tech-icon-img" alt="Apollo"><div><div class="tech-name">Apollo Client 3.11</div><div class="tech-desc"><span class="it">GraphQL client con caching</span><span class="en">GraphQL client with caching</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- Backend -->
+    <div class="tech-category" data-aos="fade-up">
+      <span class="cat-badge cat-backend">🟢 Backend</span>
+      <div class="grid-4">
+        <div class="tech-card"><img src="assets/icons/nodejs.svg" class="tech-icon-img" alt="Node.js"><div><div class="tech-name">Node.js 18</div><div class="tech-desc"><span class="it">Runtime JavaScript server-side</span><span class="en">Server-side JavaScript runtime</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/apollo.png" class="tech-icon-img" alt="Apollo Server"><div><div class="tech-name">Apollo Server 3</div><div class="tech-desc"><span class="it">GraphQL su Express, schema auto-merged</span><span class="en">GraphQL on Express, auto-merged schema</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/express-js-seeklogo.svg" class="tech-icon-img invert-dark" alt="Express.js"><div><div class="tech-name">Express.js</div><div class="tech-desc"><span class="it">Framework HTTP, REST API v1</span><span class="en">HTTP framework, REST API v1</span></div></div></div>
+        <div class="tech-card"><span class="tech-icon">⏰</span><div><div class="tech-name">node-cron</div><div class="tech-desc"><span class="it">Job schedulati: sync, cleanup, reset bot</span><span class="en">Scheduled jobs: sync, cleanup, bot reset</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- Database -->
+    <div class="tech-category" data-aos="fade-up">
+      <span class="cat-badge cat-database">🗄️ Database &amp; Storage</span>
+      <div class="grid-4">
+        <div class="tech-card"><img src="assets/icons/postgresql-logo-svgrepo-com.svg" class="tech-icon-img" alt="PostgreSQL"><div><div class="tech-name">PostgreSQL</div><div class="tech-desc"><span class="it">DB principale, JSONB, time-series, soft delete</span><span class="en">Main DB, JSONB, time-series, soft delete</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/mongo-svgrepo-com.svg" class="tech-icon-img" alt="MongoDB"><div><div class="tech-name">MongoDB</div><div class="tech-desc"><span class="it">Dati non strutturati e log</span><span class="en">Unstructured data and logs</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/aws-svgrepo-com.svg" class="tech-icon-img" alt="AWS S3"><div><div class="tech-name">AWS S3</div><div class="tech-desc"><span class="it">Storage file, immagini profilo, loghi</span><span class="en">File storage, profile images, logos</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- DevOps -->
+    <div class="tech-category" data-aos="fade-up">
+      <span class="cat-badge cat-devops">🐳 DevOps</span>
+      <div class="grid-4">
+        <div class="tech-card"><img src="assets/icons/docker-svgrepo-com.svg" class="tech-icon-img" alt="Docker"><div><div class="tech-name">Docker</div><div class="tech-desc"><span class="it">Build multi-stage, container per ogni servizio</span><span class="en">Multi-stage build, container per service</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/github-142-svgrepo-com.svg" class="tech-icon-img invert-dark" alt="GitHub Actions"><div><div class="tech-name">GitHub Actions</div><div class="tech-desc"><span class="it">CI/CD: build → test → deploy automatizzato</span><span class="en">CI/CD: automated build → test → deploy</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/aws-svgrepo-com.svg" class="tech-icon-img" alt="AWS ECR"><div><div class="tech-name">AWS ECR</div><div class="tech-desc"><span class="it">Registry Docker privato su cloud AWS</span><span class="en">Private Docker registry on AWS cloud</span></div></div></div>
+        <div class="tech-card"><img src="assets/icons/nix-svgrepo-com.svg" class="tech-icon-img" alt="NixOS"><div><div class="tech-name">NixOS</div><div class="tech-desc"><span class="it">Server di produzione a configurazione dichiarativa</span><span class="en">Production server with declarative config</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- AI -->
+    <div class="tech-category" data-aos="fade-up">
+      <span class="cat-badge cat-ai">🤖 AI &amp; Servizi</span>
+      <div class="grid-4">
+        <div class="tech-card"><span class="tech-icon">🤖</span><div><div class="tech-name">Claude (Anthropic)</div><div class="tech-desc"><span class="it">AI assistant principale, streaming via Socket.IO</span><span class="en">Primary AI assistant, streaming via Socket.IO</span></div></div></div>
+        <div class="tech-card"><span class="tech-icon">🧠</span><div><div class="tech-name">OpenAI GPT</div><div class="tech-desc"><span class="it">Capacità AI secondarie</span><span class="en">Secondary AI capabilities</span></div></div></div>
+        <div class="tech-card"><span class="tech-icon">🔥</span><div><div class="tech-name">Firebase FCM</div><div class="tech-desc"><span class="it">Push notification su dispositivi mobile</span><span class="en">Push notifications to mobile devices</span></div></div></div>
+        <div class="tech-card"><span class="tech-icon">📧</span><div><div class="tech-name">SendGrid / AWS SES</div><div class="tech-desc"><span class="it">Email transazionali e di notifica</span><span class="en">Transactional and notification emails</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  5. GESTIONE DEI DATI                                     -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="dati">
+  <div class="container">
+    <div data-aos="fade-up">
+      <span class="section-label"><span class="it">Database</span><span class="en">Database</span></span>
+      <h2 class="section-title"><span class="it">Gestione dei Dati</span><span class="en">Data Management</span></h2>
+      <p class="section-sub"><span class="it">PostgreSQL come database principale con schema relazionale, JSONB per configurazioni eterogenee e tabelle time-series per i dati dei sensori.</span><span class="en">PostgreSQL as the primary database with relational schema, JSONB for heterogeneous configurations and time-series tables for sensor data.</span></p>
+    </div>
+
+    <!-- ER Diagram -->
+    <h3 data-aos="fade-up" style="margin-bottom:4px;color:var(--text)">
+      <span class="it">Schema Entità-Relazioni</span><span class="en">Entity-Relationship Schema</span>
+    </h3>
+    <div class="er-diagram" data-aos="fade-up" data-aos-delay="100">
+      <div class="er-table">
+        <div class="er-table-name">users</div>
+        <div class="er-col"><span class="badge-pk">PK</span><span class="er-col-name">id</span><span class="er-col-type">char(32)</span></div>
+        <div class="er-col"><span class="er-col-name">email</span><span class="er-col-type">text</span></div>
+        <div class="er-col"><span class="er-col-name">role</span><span class="er-col-type">varchar</span></div>
+        <div class="er-col"><span class="er-col-name">password</span><span class="er-col-type">text</span></div>
+        <div class="er-col"><span class="badge-j">J</span><span class="er-col-name">details</span><span class="er-col-type">jsonb</span></div>
+        <div class="er-col"><span class="er-col-name">deleted_on</span><span class="er-col-type">timestamptz</span></div>
+      </div>
+      <div class="er-table">
+        <div class="er-table-name">organizations</div>
+        <div class="er-col"><span class="badge-pk">PK</span><span class="er-col-name">id</span><span class="er-col-type">char(32)</span></div>
+        <div class="er-col"><span class="badge-j">J</span><span class="er-col-name">details</span><span class="er-col-type">jsonb</span></div>
+        <div class="er-col"><span class="er-col-name">logo_url</span><span class="er-col-type">text</span></div>
+        <div class="er-col"><span class="er-col-name">deleted_on</span><span class="er-col-type">timestamptz</span></div>
+      </div>
+      <div class="er-table">
+        <div class="er-table-name">widgets</div>
+        <div class="er-col"><span class="badge-pk">PK</span><span class="er-col-name">id</span><span class="er-col-type">char(32)</span></div>
+        <div class="er-col"><span class="badge-fk">FK</span><span class="er-col-name">related_widget</span><span class="er-col-type">char(32)</span></div>
+        <div class="er-col"><span class="badge-j">J</span><span class="er-col-name">details</span><span class="er-col-type">jsonb</span></div>
+        <div class="er-col"><span class="badge-fk">FK</span><span class="er-col-name">organization</span><span class="er-col-type">char(32)</span></div>
+        <div class="er-col"><span class="er-col-name">deleted_on</span><span class="er-col-type">timestamptz</span></div>
+      </div>
+      <div class="er-table">
+        <div class="er-table-name">metrics</div>
+        <div class="er-col"><span class="badge-pk">PK</span><span class="er-col-name">id</span><span class="er-col-type">char(32)</span></div>
+        <div class="er-col"><span class="badge-fk">FK</span><span class="er-col-name">widget_id</span><span class="er-col-type">char(32)</span></div>
+        <div class="er-col"><span class="er-col-name">value</span><span class="er-col-type">text</span></div>
+        <div class="er-col"><span class="er-col-name">created_on</span><span class="er-col-type">timestamptz</span></div>
+      </div>
+      <div class="er-table">
+        <div class="er-table-name">notifications</div>
+        <div class="er-col"><span class="badge-pk">PK</span><span class="er-col-name">id</span><span class="er-col-type">char(32)</span></div>
+        <div class="er-col"><span class="er-col-name">metric_type</span><span class="er-col-type">varchar</span></div>
+        <div class="er-col"><span class="er-col-name">comparison_op</span><span class="er-col-type">varchar</span></div>
+        <div class="er-col"><span class="er-col-name">comparison_val</span><span class="er-col-type">varchar</span></div>
+        <div class="er-col"><span class="er-col-name">deleted_on</span><span class="er-col-type">timestamptz</span></div>
+      </div>
+      <div class="er-table">
+        <div class="er-table-name">fired_notifications</div>
+        <div class="er-col"><span class="badge-pk">PK</span><span class="er-col-name">id</span><span class="er-col-type">char(32)</span></div>
+        <div class="er-col"><span class="badge-fk">FK</span><span class="er-col-name">notification_id</span><span class="er-col-type">char(32)</span></div>
+        <div class="er-col"><span class="badge-fk">FK</span><span class="er-col-name">user_id</span><span class="er-col-type">char(32)</span></div>
+        <div class="er-col"><span class="er-col-name">fired_at</span><span class="er-col-type">timestamptz</span></div>
+        <div class="er-col"><span class="er-col-name">read_at</span><span class="er-col-type">timestamptz</span></div>
+      </div>
+    </div>
+
+    <div class="info-box" data-aos="fade-up">
+      <span style="font-size:1.3rem">💡</span>
+      <p><strong>JSONB:</strong> <span class="it">Il campo <code>details</code> dei widget è di tipo <code>JSONB</code>, permettendo a ogni tipo di widget (telecamera, sensore, meteo, semaforo...) di avere la propria struttura dati senza richiedere tabelle separate. PostgreSQL permette di interrogare i valori con operatori come <code>details->>'name'</code> o <code>details->'position'->>'lat'</code>.</span><span class="en">The widget <code>details</code> field is <code>JSONB</code>, allowing each widget type (camera, sensor, weather, traffic light...) to have its own data structure without separate tables. PostgreSQL lets you query values with operators like <code>details->>'name'</code> or <code>details->'position'->>'lat'</code>.</span></p>
+    </div>
+
+    <!-- SQL snippet -->
+    <h3 data-aos="fade-up" style="color:var(--text);margin-bottom:8px;">
+      <span class="it">Query di campionamento metriche</span><span class="en">Metric sampling query</span>
+    </h3>
+    <p data-aos="fade-up" style="margin-bottom:0;font-size:0.88rem;">
+      <span class="it">Il backend aggrega le letture dei sensori in finestre temporali (5-60 minuti) prima di restituirle al frontend.</span>
+      <span class="en">The backend aggregates sensor readings into time windows (5-60 minutes) before returning them to the frontend.</span>
+    </p>
+    <pre data-aos="fade-up"><code class="language-sql">-- Campionamento metriche con aggregazione oraria (24 ore)
+SELECT
+    widget_id,
+    AVG(value::numeric)              AS media_valore,
+    DATE_TRUNC('hour', created_on)   AS ora
+FROM metrics
+WHERE
+    widget_id = $1
+    AND created_on >= NOW() - INTERVAL '24 hours'
+    -- Il QueryBuilder aggiunge automaticamente:
+    -- AND deleted_on IS NULL
+GROUP BY widget_id, ora
+ORDER BY ora ASC;</code></pre>
+
+    <div data-aos="fade-up">
+      <h3 style="color:var(--text);margin-bottom:8px;">
+        <span class="it">Aggregazione per tipo di metrica</span><span class="en">Aggregation by metric type</span>
+      </h3>
+      <table class="metrics-table">
+        <thead>
+          <tr>
+            <th><span class="it">Tipo</span><span class="en">Type</span></th>
+            <th><span class="it">Aggregazione</span><span class="en">Aggregation</span></th>
+            <th><span class="it">Motivo</span><span class="en">Reason</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>PEOPLE_DETECTED</td><td><span class="it">Somma</span><span class="en">Sum</span></td><td><span class="it">Conta il totale nel periodo</span><span class="en">Count total in period</span></td></tr>
+          <tr><td>PASSAGE_DETECTED</td><td><span class="it">Somma</span><span class="en">Sum</span></td><td><span class="it">Accumula i passaggi</span><span class="en">Accumulate passages</span></td></tr>
+          <tr><td>PARKING_SPOTS</td><td><span class="it">Ultimo valore</span><span class="en">Last value</span></td><td><span class="it">Stato corrente parcheggio</span><span class="en">Current parking state</span></td></tr>
+          <tr><td>TRAFFIC_LIGHT_STATUS</td><td><span class="it">Ultimo valore</span><span class="en">Last value</span></td><td><span class="it">Stato attuale semaforo</span><span class="en">Current traffic light state</span></td></tr>
+          <tr><td>GENERIC</td><td><span class="it">Media</span><span class="en">Average</span></td><td><span class="it">Livello medio bidone nel periodo</span><span class="en">Average bin level in period</span></td></tr>
+          <tr><td>METEO</td><td><span class="it">Media</span><span class="en">Average</span></td><td><span class="it">Temperatura/vento media</span><span class="en">Average temperature/wind</span></td></tr>
+          <tr><td>OSCILLATIONS</td><td><span class="it">Somma</span><span class="en">Sum</span></td><td><span class="it">Oscillazioni strutturali totali</span><span class="en">Total structural oscillations</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  6. SENSORI E IoT                                         -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="sensori">
+  <div class="container">
+    <div data-aos="fade-up">
+      <span class="section-label"><span class="it">Internet of Things</span><span class="en">Internet of Things</span></span>
+      <h2 class="section-title"><span class="it">Gestione Sensori e IoT</span><span class="en">Sensor &amp; IoT Management</span></h2>
+      <p class="section-sub"><span class="it">I sensori fisici inviano i propri dati al backend tramite API REST autenticata. Il backend valida, archivia e aggrega i dati, poi li serve al frontend con campionamento temporale ottimizzato.</span><span class="en">Physical sensors send their data to the backend via authenticated REST API. The backend validates, stores and aggregates the data, then serves it to the frontend with optimized time-window sampling.</span></p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;" class="responsive-2col" data-aos="fade-up">
+      <!-- Flowchart -->
+      <div>
+        <h3 style="color:var(--text);margin-bottom:24px;"><span class="it">Flusso dati IoT</span><span class="en">IoT Data Flow</span></h3>
+        <div class="flowchart">
+          <div class="flow-step">
+            <div class="flow-left"><div class="flow-num">1</div><div class="flow-vline"></div></div>
+            <div class="flow-body">
+              <h4>📡 <span class="it">Sensore fisico</span><span class="en">Physical sensor</span></h4>
+              <p><span class="it">Il dispositivo acquisisce la misurazione (occupazione parcheggio, persone rilevate, temperatura...)</span><span class="en">The device acquires the measurement (parking occupancy, detected people, temperature...)</span></p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-left"><div class="flow-num">2</div><div class="flow-vline"></div></div>
+            <div class="flow-body">
+              <h4>🔐 <span class="it">Autenticazione</span><span class="en">Authentication</span></h4>
+              <p><span class="it">Richiesta HTTP con X-API-Key. Il backend verifica token, IP whitelist e scope (quali metriche/widget può scrivere).</span><span class="en">HTTP request with X-API-Key. Backend verifies token, IP whitelist and scope (which metrics/widgets it can write).</span></p>
+              <code class="flow-code">PUT /api/v1/integrations/metric</code>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-left"><div class="flow-num">3</div><div class="flow-vline"></div></div>
+            <div class="flow-body">
+              <h4>💾 <span class="it">Archiviazione</span><span class="en">Storage</span></h4>
+              <p><span class="it">Il valore viene salvato nella tabella <code>metrics</code> con <code>widget_id</code> e timestamp.</span><span class="en">The value is saved to the <code>metrics</code> table with <code>widget_id</code> and timestamp.</span></p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-left"><div class="flow-num">4</div><div class="flow-vline"></div></div>
+            <div class="flow-body">
+              <h4>🔔 MetricNotification</h4>
+              <p><span class="it">Il service valuta le soglie configurate. Se il valore supera una soglia → notifica via Firebase push, email o SMS.</span><span class="en">The service evaluates configured thresholds. If the value exceeds a threshold → notify via Firebase push, email or SMS.</span></p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-left"><div class="flow-num">5</div><div class="flow-vline"></div></div>
+            <div class="flow-body">
+              <h4>📊 <span class="it">Visualizzazione</span><span class="en">Visualization</span></h4>
+              <p><span class="it">Il frontend esegue query Apollo GraphQL ogni 5 minuti (<code>getMetric()</code>), riceve i dati aggregati e aggiorna grafici e widget.</span><span class="en">The frontend executes Apollo GraphQL queries every 5 minutes (<code>getMetric()</code>), receives aggregated data and updates charts and widgets.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div>
+        <h3 style="color:var(--text);margin-bottom:8px;"><span class="it">Demo: Occupazione Parcheggio (24h)</span><span class="en">Demo: Parking Occupancy (24h)</span></h3>
+        <p style="font-size:0.85rem;margin-bottom:0;"><span class="it">Dati simulati — verde &lt;60%, arancio 60-80%, rosso &gt;80%</span><span class="en">Simulated data — green &lt;60%, orange 60-80%, red &gt;80%</span></p>
+        <div class="chart-wrap">
+          <canvas id="sensor-chart"></canvas>
+        </div>
+        <p class="chart-note"><span class="it">I dati vengono campionati in finestre di 5-60 minuti dal backend prima di essere inviati al frontend.</span><span class="en">Data is sampled in 5-60 minute windows by the backend before being sent to the frontend.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  7. TELECAMERE                                            -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="telecamere">
+  <div class="container">
+    <div data-aos="fade-up">
+      <span class="section-label"><span class="it">Sistemi video</span><span class="en">Video systems</span></span>
+      <h2 class="section-title"><span class="it">Integrazione Telecamere</span><span class="en">Camera Integration</span></h2>
+      <p class="section-sub"><span class="it">Integrazione con Milestone XProtect VMS (Video Management System) — uno dei principali sistemi professionali per la gestione di telecamere IP. Il sistema supporta due modalità di accesso ai video.</span><span class="en">Integration with Milestone XProtect VMS — one of the leading professional systems for IP camera management. The system supports two video access modes.</span></p>
+    </div>
+
+    <div class="grid-2" data-aos="fade-up">
+      <div class="card">
+        <div class="card-icon">📡</div>
+        <div class="card-title"><span class="it">Live Stream (SDK)</span><span class="en">Live Stream (SDK)</span></div>
+        <p class="card-desc"><span class="it">Lo streaming live avviene tramite Milestone XProtect SDK integrato nella pagina come applicazione nativa. Il componente React invoca <code>window.iThelMilestoneClientApp.showCameraStream()</code> passando le credenziali e il codice telecamera.</span><span class="en">Live streaming happens via the Milestone XProtect SDK embedded in the page as a native application. The React component calls <code>window.iThelMilestoneClientApp.showCameraStream()</code> passing credentials and the camera code.</span></p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖼️</div>
+        <div class="card-title"><span class="it">Frame Storage (HTTP)</span><span class="en">Frame Storage (HTTP)</span></div>
+        <p class="card-desc"><span class="it">Per la visualizzazione di fotogrammi storici, il servizio <code>FrameRetriever</code> esegue richieste HTTP GET a un frame store esterno, recuperando sequenze di immagini con URL parametrizzati per ID telecamera e numero di fotogrammi.</span><span class="en">For historical frame viewing, the <code>FrameRetriever</code> service makes HTTP GET requests to an external frame store, retrieving image sequences with URLs parameterized by camera ID and frame count.</span></p>
+      </div>
+    </div>
+
+    <div class="divider" data-aos="fade-up"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;" data-aos="fade-up">
+      <div>
+        <h3 style="color:var(--text);margin-bottom:16px;"><span class="it">Controlli implementati</span><span class="en">Implemented controls</span></h3>
+        <div class="grid-2" style="gap:12px;">
+          <div class="widget-badge"><span class="wb-icon">▶️</span><div class="wb-info"><div class="wb-name"><span class="it">Play / Pausa</span><span class="en">Play / Pause</span></div></div></div>
+          <div class="widget-badge"><span class="wb-icon">⏩</span><div class="wb-info"><div class="wb-name"><span class="it">Avanti / Indietro</span><span class="en">Forward / Backward</span></div></div></div>
+          <div class="widget-badge"><span class="wb-icon">⚡</span><div class="wb-info"><div class="wb-name">Velocità 1x/2x/4x/8x</div></div></div>
+          <div class="widget-badge"><span class="wb-icon">🕐</span><div class="wb-info"><div class="wb-name"><span class="it">Salto a timestamp</span><span class="en">Jump to timestamp</span></div></div></div>
+          <div class="widget-badge"><span class="wb-icon">⛶</span><div class="wb-info"><div class="wb-name"><span class="it">Fullscreen mobile</span><span class="en">Mobile fullscreen</span></div></div></div>
+          <div class="widget-badge"><span class="wb-icon">🔄</span><div class="wb-info"><div class="wb-name"><span class="it">Orientamento landscape</span><span class="en">Landscape orientation</span></div></div></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="color:var(--text);margin-bottom:8px;"><span class="it">Fullscreen mobile (YouTube-style)</span><span class="en">Mobile fullscreen (YouTube-style)</span></h3>
+        <p style="font-size:0.85rem;margin-bottom:0;"><span class="it">Su mobile il fullscreen è implementato con un CSS overlay <code>position:fixed</code> come fallback e <code>screen.orientation.lock('landscape')</code> per bloccare l'orientamento.</span><span class="en">On mobile, fullscreen is implemented with a CSS overlay <code>position:fixed</code> as fallback and <code>screen.orientation.lock('landscape')</code> to lock orientation.</span></p>
+        <pre style="margin-top:16px;"><code class="language-javascript">// Fullscreen mobile con orientamento paesaggio
+async function enterFullscreen(containerEl) {
+  if (document.fullscreenEnabled) {
+    await containerEl.requestFullscreen();
+  } else {
+    // Fallback CSS overlay (stile YouTube)
+    containerEl.classList.add('fullscreen-overlay');
+  }
+  // Blocca orientamento landscape (Android)
+  if (screen.orientation?.lock) {
+    try {
+      await screen.orientation.lock('landscape');
+    } catch (_) {
+      // iOS non supporta orientation.lock
+    }
+  }
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  8. DASHBOARD E WIDGET                                    -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="dashboard">
+  <div class="container">
+    <div data-aos="fade-up">
+      <span class="section-label"><span class="it">Interfaccia</span><span class="en">Interface</span></span>
+      <h2 class="section-title"><span class="it">Dashboard e Widget System</span><span class="en">Dashboard &amp; Widget System</span></h2>
+      <p class="section-sub"><span class="it">La dashboard è il cuore dell'interfaccia: una griglia configurabile di 15+ tipi di widget, con layout drag-and-drop, responsive mobile e aggiornamento real-time.</span><span class="en">The dashboard is the heart of the interface: a configurable grid of 15+ widget types, with drag-and-drop layout, mobile responsiveness and real-time updates.</span></p>
+    </div>
+
+    <!-- Widget types -->
+    <h3 style="color:var(--text);margin-bottom:16px;" data-aos="fade-up">
+      <span class="it">Tipi di Widget</span><span class="en">Widget Types</span>
+    </h3>
+    <div class="grid-4" data-aos="fade-up">
+      <div class="widget-badge"><span class="wb-icon">📷</span><div class="wb-info"><div class="wb-name"><span class="it">Telecamera</span><span class="en">Camera</span></div><div class="wb-type">CAMERA</div></div></div>
+      <div class="widget-badge"><span class="wb-icon">📊</span><div class="wb-info"><div class="wb-name"><span class="it">Metrica</span><span class="en">Metric</span></div><div class="wb-type">METRIC</div></div></div>
+      <div class="widget-badge"><span class="wb-icon">☁️</span><div class="wb-info"><div class="wb-name">Meteo</div><div class="wb-type">METEO</div></div></div>
+      <div class="widget-badge"><span class="wb-icon">🚦</span><div class="wb-info"><div class="wb-name">Semaforo</div><div class="wb-type">TRAFFIC_LIGHT</div></div></div>
+      <div class="widget-badge"><span class="wb-icon">🗑️</span><div class="wb-info"><div class="wb-name"><span class="it">Sensore Generico</span><span class="en">Generic Sensor</span></div><div class="wb-type">GENERIC</div></div></div>
+      <div class="widget-badge"><span class="wb-icon">🅿️</span><div class="wb-info"><div class="wb-name"><span class="it">Card Parcheggi</span><span class="en">Parking Card</span></div><div class="wb-type">PARKING_CARD</div></div></div>
+      <div class="widget-badge"><span class="wb-icon">🔢</span><div class="wb-info"><div class="wb-name"><span class="it">Contatori</span><span class="en">Counters</span></div><div class="wb-type">COUNTER_CARD</div></div></div>
+      <div class="widget-badge"><span class="wb-icon">🗺️</span><div class="wb-info"><div class="wb-name">Mappa</div><div class="wb-type">MAP</div></div></div>
+      <div class="widget-badge"><span class="wb-icon">📅</span><div class="wb-info"><div class="wb-name"><span class="it">Timeline</span><span class="en">Timeline</span></div><div class="wb-type">TIMELINE_EVENTS</div></div></div>
+      <div class="widget-badge"><span class="wb-icon">⚡</span><div class="wb-info"><div class="wb-name"><span class="it">Azione HTTP</span><span class="en">HTTP Action</span></div><div class="wb-type">ACTION_WIDGET</div></div></div>
+      <div class="widget-badge"><span class="wb-icon">🔴</span><div class="wb-info"><div class="wb-name">Zabbix Status</div><div class="wb-type">ZABBIX_STATUS</div></div></div>
+      <div class="widget-badge"><span class="wb-icon">➕</span><div class="wb-info"><div class="wb-name"><span class="it">Metrica Aggregata</span><span class="en">Aggregate Metric</span></div><div class="wb-type">METRIC_AGGREGATE</div></div></div>
+    </div>
+
+    <div class="divider" data-aos="fade-up"></div>
+
+    <div class="grid-3" data-aos="fade-up">
+      <div class="card">
+        <div class="card-icon">🔲</div>
+        <div class="card-title"><span class="it">Grid Layout CSS</span><span class="en">CSS Grid Layout</span></div>
+        <p class="card-desc"><span class="it">La griglia usa <code>grid-template-columns: repeat(auto-fit, minmax(360px, 1fr))</code>. I widget telecamera occupano il doppio della larghezza. Su mobile &lt;768px la griglia diventa una singola colonna.</span><span class="en">The grid uses <code>grid-template-columns: repeat(auto-fit, minmax(360px, 1fr))</code>. Camera widgets span double width. On mobile &lt;768px the grid becomes a single column.</span></p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖱️</div>
+        <div class="card-title">Drag &amp; Drop</div>
+        <p class="card-desc"><span class="it">L'ordine dei widget è modificabile tramite drag-and-drop implementato con <strong>dnd-kit</strong>. La posizione viene salvata nel database con la colonna <code>widget_position</code> della tabella <code>dashboards</code>.</span><span class="en">Widget order is modifiable via drag-and-drop implemented with <strong>dnd-kit</strong>. Position is saved in the database via the <code>widget_position</code> column of the <code>dashboards</code> table.</span></p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👆</div>
+        <div class="card-title"><span class="it">Architettura Padre-Figlio</span><span class="en">Parent-Child Architecture</span></div>
+        <p class="card-desc"><span class="it">I widget hanno una relazione padre-figlio tramite <code>related_widget</code>: ad esempio, una telecamera (padre) può avere widget METRIC figli per le analytics (persone rilevate, parcheggi occupati).</span><span class="en">Widgets have a parent-child relationship via <code>related_widget</code>: for example, a camera (parent) can have child METRIC widgets for analytics (detected people, occupied parking spots).</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  9. MAPPA                                                 -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="mappa">
+  <div class="container">
+    <div data-aos="fade-up">
+      <span class="section-label"><span class="it">Geolocalizzazione</span><span class="en">Geolocation</span></span>
+      <h2 class="section-title"><span class="it">Mappa Geografica</span><span class="en">Geographic Map</span></h2>
+      <p class="section-sub"><span class="it">Ogni sensore e telecamera ha una posizione geografica (lat/lng nel campo JSONB). La mappa interattiva OpenLayers mostra tutti i dispositivi con marker color-coded in base allo stato degli alert.</span><span class="en">Every sensor and camera has a geographic position (lat/lng in the JSONB field). The interactive OpenLayers map shows all devices with color-coded markers based on alert status.</span></p>
+    </div>
+
+    <div data-aos="fade-up" style="margin:24px 0;">
+      <img src="assets/screenshots/mappa.PNG" alt="Mappa geografica Aivia" style="width:100%;border-radius:var(--radius);border:1px solid var(--border);display:block;">
+    </div>
+
+    <div class="grid-3" data-aos="fade-up">
+      <div class="card">
+        <div class="card-icon">📍</div>
+        <div class="card-title"><span class="it">Marker Intelligenti</span><span class="en">Smart Markers</span></div>
+        <p class="card-desc"><span class="it">I marker sono elementi DOM React con icone specifiche per tipo (telecamera, sensore, semaforo). Il colore riflette la priorità più alta tra gli alert visivi attivi sul widget.</span><span class="en">Markers are React DOM elements with type-specific icons (camera, sensor, traffic light). Color reflects the highest priority among active visual alerts on the widget.</span></p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <div class="card-title"><span class="it">Touch Ottimizzato</span><span class="en">Touch Optimized</span></div>
+        <p class="card-desc"><span class="it">Su mobile il pan della mappa richiede 2 dita (condizione DragPan custom) per non interferire con lo scroll della pagina. Il tasto fullscreen rispetta le API <code>webkit-fullscreen</code> su iOS.</span><span class="en">On mobile, map panning requires 2 fingers (custom DragPan condition) to avoid interfering with page scroll. The fullscreen button respects <code>webkit-fullscreen</code> APIs on iOS.</span></p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title"><span class="it">Interazione Click</span><span class="en">Click Interaction</span></div>
+        <p class="card-desc"><span class="it">Click su un marker: se la telecamera è vicina al centro (&lt;6km), fa zoom verso di essa. Altrimenti naviga direttamente alla pagina di dettaglio del widget. Doppio click centra la mappa sulla posizione iniziale.</span><span class="en">Clicking a marker: if the camera is near the center (&lt;6km), it zooms towards it. Otherwise it navigates directly to the widget detail page. Double-click recenters the map on the initial position.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  10. WORKFLOW DI DEPLOY                                   -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="deploy">
+  <div class="container">
+    <div data-aos="fade-up">
+      <span class="section-label"><span class="it">DevOps</span><span class="en">DevOps</span></span>
+      <h2 class="section-title"><span class="it">Workflow di Sviluppo e Deploy</span><span class="en">Development &amp; Deployment Workflow</span></h2>
+      <p class="section-sub"><span class="it">Il progetto segue un branching strategy strutturato con tre ambienti distinti (test, staging, produzione) e una pipeline CI/CD automatizzata su GitHub Actions.</span><span class="en">The project follows a structured branching strategy with three distinct environments (test, staging, production) and an automated CI/CD pipeline on GitHub Actions.</span></p>
+    </div>
+
+    <!-- Git branches -->
+    <h3 style="color:var(--text);margin-bottom:8px;" data-aos="fade-up">
+      <span class="it">Strategia di Branching</span><span class="en">Branching Strategy</span>
+    </h3>
+    <div class="git-diagram" data-aos="fade-up">
+      <div class="git-branch b-feature">
+        <div class="git-dot"></div>
+        <div class="git-hline"></div>
+        <div class="git-commits">
+          <div class="git-c"></div><div class="git-cl"></div>
+          <div class="git-c"></div><div class="git-cl"></div>
+          <div class="git-c"></div>
+        </div>
+        <span class="git-arrow">→</span>
+        <span class="git-label">feat/*</span>
+        <span class="git-desc"><span class="it">Sviluppo feature isolate, merge su development</span><span class="en">Isolated feature development, merged into development</span></span>
+      </div>
+      <div class="git-branch b-dev">
+        <div class="git-dot"></div>
+        <div class="git-hline"></div>
+        <div class="git-commits">
+          <div class="git-c"></div><div class="git-cl"></div>
+          <div class="git-c"></div><div class="git-cl"></div>
+          <div class="git-c"></div><div class="git-cl"></div>
+          <div class="git-c"></div>
+        </div>
+        <span class="git-arrow">→</span>
+        <span class="git-label">development</span>
+        <span class="git-desc"><span class="it">Integrazione continua, ambiente di test</span><span class="en">Continuous integration, test environment</span></span>
+      </div>
+      <div class="git-branch b-release">
+        <div class="git-dot"></div>
+        <div class="git-hline"></div>
+        <div class="git-commits">
+          <div class="git-c"></div><div class="git-cl"></div>
+          <div class="git-c"></div><div class="git-cl"></div>
+          <div class="git-c"></div>
+        </div>
+        <span class="git-arrow">→</span>
+        <span class="git-label">release</span>
+        <span class="git-desc" style="color:#fcd34d;font-weight:600;"><span class="it">🚀 Deploy in produzione, trigger CI/CD</span><span class="en">🚀 Production deploy, CI/CD trigger</span></span>
+      </div>
+    </div>
+
+    <div class="divider" data-aos="fade-up"></div>
+
+    <!-- Pipeline -->
+    <h3 style="color:var(--text);margin-bottom:16px;" data-aos="fade-up">
+      <span class="it">Pipeline CI/CD (GitHub Actions)</span><span class="en">CI/CD Pipeline (GitHub Actions)</span>
+    </h3>
+    <p data-aos="fade-up" style="font-size:0.88rem;margin-bottom:24px;">
+      <span class="it">La pipeline si attiva automaticamente ad ogni commit con il prefisso <code>chore(release)</code> sul branch appropriato.</span>
+      <span class="en">The pipeline triggers automatically on every commit with the <code>chore(release)</code> prefix on the appropriate branch.</span>
+    </p>
+    <div style="display:flex;align-items:stretch;gap:0;" data-aos="fade-up">
+      <div class="pipeline" style="flex:1;display:flex;">
+        <div class="pipe-step build">
+          <div class="pipe-step-icon">🔨</div>
+          <div class="pipe-step-name"><span class="it">1. Build &amp; Test</span><span class="en">1. Build &amp; Test</span></div>
+          <ul class="pipe-step-items">
+            <li>npm / yarn install</li>
+            <li>TypeScript compile</li>
+            <li>Jest test suite</li>
+            <li>Docker build</li>
+            <li>Push → AWS ECR</li>
+          </ul>
+        </div>
+        <div class="pipe-arrow">▶</div>
+        <div class="pipe-step deploy">
+          <div class="pipe-step-icon">🚀</div>
+          <div class="pipe-step-name"><span class="it">2. Deploy</span><span class="en">2. Deploy</span></div>
+          <ul class="pipe-step-items">
+            <li>AWS credentials</li>
+            <li>SSH → server NixOS</li>
+            <li><span class="it">Python script aggiorna immagine</span><span class="en">Python script updates image</span></li>
+            <li>git push config</li>
+            <li>NixOS rebuild</li>
+          </ul>
+        </div>
+        <div class="pipe-arrow">▶</div>
+        <div class="pipe-step notify">
+          <div class="pipe-step-icon">📧</div>
+          <div class="pipe-step-name"><span class="it">3. Notifica</span><span class="en">3. Notify</span></div>
+          <ul class="pipe-step-items">
+            <li>Gmail SMTP</li>
+            <li><span class="it">Email team sviluppo</span><span class="en">Dev team email</span></li>
+            <li><span class="it">Esito pipeline</span><span class="en">Pipeline result</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" data-aos="fade-up" style="margin-top:32px;">
+      <span style="font-size:1.3rem">🐳</span>
+      <p><strong>Docker multi-stage:</strong> <span class="it">Il frontend usa un build multi-stage (<code>node:24-alpine</code>): uno stage per il build Next.js e uno stage di runtime più leggero. Le variabili d'ambiente come URL Socket.IO e Apollo vengono iniettate come ARG al momento del build.</span><span class="en">The frontend uses a multi-stage build (<code>node:24-alpine</code>): one stage for the Next.js build and a lighter runtime stage. Environment variables like Socket.IO and Apollo URLs are injected as ARG at build time.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  11. COMPETENZE ACQUISITE                                  -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="competenze">
+  <div class="container">
+    <div data-aos="fade-up">
+      <span class="section-label"><span class="it">Crescita professionale</span><span class="en">Professional growth</span></span>
+      <h2 class="section-title"><span class="it">Competenze Acquisite</span><span class="en">Skills Acquired</span></h2>
+      <p class="section-sub"><span class="it">Il tirocinio ha permesso di approfondire tecnologie moderne e metodologie professionali di sviluppo software, passando da una conoscenza teorica a un utilizzo pratico quotidiano.</span><span class="en">The internship allowed me to deepen modern technologies and professional software development methodologies, moving from theoretical knowledge to daily practical use.</span></p>
+    </div>
+
+    <!-- Before/after table -->
+    <div data-aos="fade-up">
+      <h3 style="color:var(--text);margin-bottom:16px;"><span class="it">Prima e Dopo il Tirocinio</span><span class="en">Before and After the Internship</span></h3>
+      <table class="ba-table">
+        <thead>
+          <tr>
+            <th><span class="it">Competenza</span><span class="en">Skill</span></th>
+            <th><span class="it">Prima</span><span class="en">Before</span></th>
+            <th><span class="it">Dopo</span><span class="en">After</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>React / Next.js</td>
+            <td class="before"><span class="it">Basi, componenti semplici</span><span class="en">Basics, simple components</span></td>
+            <td class="after"><span class="it">App Router, SSR, Apollo, Zustand</span><span class="en">App Router, SSR, Apollo, Zustand</span></td>
+          </tr>
+          <tr>
+            <td>TypeScript</td>
+            <td class="before"><span class="it">Nessuna esperienza</span><span class="en">No experience</span></td>
+            <td class="after"><span class="it">Uso quotidiano, tipi generici, decoratori</span><span class="en">Daily use, generics, decorators</span></td>
+          </tr>
+          <tr>
+            <td>GraphQL / Apollo</td>
+            <td class="before"><span class="it">Nessuna esperienza</span><span class="en">No experience</span></td>
+            <td class="after"><span class="it">Schema design, resolver, fragment union types</span><span class="en">Schema design, resolvers, fragment union types</span></td>
+          </tr>
+          <tr>
+            <td>PostgreSQL</td>
+            <td class="before"><span class="it">SQL base, SELECT/INSERT</span><span class="en">Basic SQL, SELECT/INSERT</span></td>
+            <td class="after"><span class="it">JSONB, migration, QueryBuilder fluente, indici</span><span class="en">JSONB, migrations, fluent QueryBuilder, indexes</span></td>
+          </tr>
+          <tr>
+            <td>Docker</td>
+            <td class="before"><span class="it">Nessuna esperienza</span><span class="en">No experience</span></td>
+            <td class="after"><span class="it">Build multi-stage, ECR, variabili ARG</span><span class="en">Multi-stage build, ECR, ARG variables</span></td>
+          </tr>
+          <tr>
+            <td>Git Branching</td>
+            <td class="before"><span class="it">Uso base, commit e push</span><span class="en">Basic use, commit and push</span></td>
+            <td class="after"><span class="it">Workflow dev/release/main, conventional commits</span><span class="en">Dev/release/main workflow, conventional commits</span></td>
+          </tr>
+          <tr>
+            <td>IoT / Sensori</td>
+            <td class="before"><span class="it">Nessuna esperienza</span><span class="en">No experience</span></td>
+            <td class="after"><span class="it">REST ingestion, campionamento, soglie alert</span><span class="en">REST ingestion, sampling, alert thresholds</span></td>
+          </tr>
+          <tr>
+            <td><span class="it">Telecamere IP (Milestone)</span><span class="en">IP Cameras (Milestone)</span></td>
+            <td class="before"><span class="it">Nessuna esperienza</span><span class="en">No experience</span></td>
+            <td class="after"><span class="it">SDK XProtect, frame retrieval, fullscreen mobile</span><span class="en">XProtect SDK, frame retrieval, mobile fullscreen</span></td>
+          </tr>
+          <tr>
+            <td>CI/CD</td>
+            <td class="before"><span class="it">Nessuna esperienza</span><span class="en">No experience</span></td>
+            <td class="after"><span class="it">GitHub Actions: build, test, deploy, notify</span><span class="en">GitHub Actions: build, test, deploy, notify</span></td>
+          </tr>
+          <tr>
+            <td>AI Integration</td>
+            <td class="before"><span class="it">Nessuna esperienza</span><span class="en">No experience</span></td>
+            <td class="after"><span class="it">Claude API, OpenAI, streaming Socket.IO</span><span class="en">Claude API, OpenAI, Socket.IO streaming</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Skill bars -->
+    <h3 style="color:var(--text);margin-top:48px;margin-bottom:24px;" data-aos="fade-up">
+      <span class="it">Livello di padronanza</span><span class="en">Proficiency level</span>
+    </h3>
+    <div class="skills-cols" data-aos="fade-up">
+      <div>
+        <div class="skill-item" data-skill="85">
+          <div class="skill-header"><span class="skill-name">React / Next.js</span><span class="skill-lvl"><span class="it">Avanzato</span><span class="en">Advanced</span></span></div>
+          <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" data-skill="80">
+          <div class="skill-header"><span class="skill-name">TypeScript</span><span class="skill-lvl"><span class="it">Avanzato</span><span class="en">Advanced</span></span></div>
+          <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" data-skill="78">
+          <div class="skill-header"><span class="skill-name">Node.js / Express</span><span class="skill-lvl"><span class="it">Intermedio</span><span class="en">Intermediate</span></span></div>
+          <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" data-skill="75">
+          <div class="skill-header"><span class="skill-name">GraphQL / Apollo</span><span class="skill-lvl"><span class="it">Intermedio</span><span class="en">Intermediate</span></span></div>
+          <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" data-skill="72">
+          <div class="skill-header"><span class="skill-name">PostgreSQL</span><span class="skill-lvl"><span class="it">Intermedio</span><span class="en">Intermediate</span></span></div>
+          <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-item" data-skill="82">
+          <div class="skill-header"><span class="skill-name">Git / Branching</span><span class="skill-lvl"><span class="it">Avanzato</span><span class="en">Advanced</span></span></div>
+          <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" data-skill="68">
+          <div class="skill-header"><span class="skill-name">Docker / DevOps</span><span class="skill-lvl"><span class="it">Intermedio</span><span class="en">Intermediate</span></span></div>
+          <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" data-skill="70">
+          <div class="skill-header"><span class="skill-name">IoT / Sensors</span><span class="skill-lvl"><span class="it">Intermedio</span><span class="en">Intermediate</span></span></div>
+          <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" data-skill="65">
+          <div class="skill-header"><span class="skill-name"><span class="it">Telecamere IP</span><span class="en">IP Cameras</span></span><span class="skill-lvl"><span class="it">Intermedio</span><span class="en">Intermediate</span></span></div>
+          <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" data-skill="60">
+          <div class="skill-header"><span class="skill-name">CI/CD Pipelines</span><span class="skill-lvl"><span class="it">Base</span><span class="en">Basic</span></span></div>
+          <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  FOOTER                                                   -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">Aivia Platform</div>
+    <div class="footer-bar"></div>
+    <div class="footer-name">[NOME STUDENTE]</div>
+    <p class="footer-info">
+      <span class="it">Anno Scolastico 2025/2026 &nbsp;·&nbsp; 4ª [CLASSE] &nbsp;·&nbsp; [NOME ISTITUTO]</span>
+      <span class="en">Academic Year 2025/2026 &nbsp;·&nbsp; 4th Year &nbsp;·&nbsp; [SCHOOL NAME]</span>
+    </p>
+    <p class="footer-credit">
+      <span class="it">Tirocinio svolto nel periodo [DATA INIZIO] — [DATA FINE]</span>
+      <span class="en">Internship period: [START DATE] — [END DATE]</span>
+    </p>
+    <p class="footer-credit" style="margin-top:6px;">
+      <span class="it">Elaborato realizzato con HTML · CSS · JavaScript</span>
+      <span class="en">Report built with HTML · CSS · JavaScript</span>
+    </p>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  SCRIPT CDN                                               -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Fix responsive per sezione sensori -->
+<style>
+  @media (max-width: 768px) {
+    .responsive-2col { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+</body>
+</html>
