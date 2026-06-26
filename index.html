@@ -37,6 +37,7 @@
       <a href="#architettura" class="nav-link"><span class="it">Architettura</span><span class="en">Architecture</span></a>
       <a href="#stack" class="nav-link">Stack</a>
       <a href="#dati" class="nav-link"><span class="it">Dati</span><span class="en">Data</span></a>
+      <a href="#chatbot" class="nav-link">Chatbot AI</a>
       <a href="#sensori" class="nav-link"><span class="it">Sensori</span><span class="en">Sensors</span></a>
       <a href="#telecamere" class="nav-link"><span class="it">Telecamere</span><span class="en">Cameras</span></a>
       <a href="#dashboard" class="nav-link">Dashboard</a>
@@ -450,7 +451,85 @@ ORDER BY ora ASC;</code></pre>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════ -->
-<!--  6. SENSORI E IoT                                         -->
+<!--  6. CHATBOT AI                                            -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="chatbot">
+  <div class="container">
+
+    <div data-aos="fade-up">
+      <span class="section-label">AI</span>
+      <h2 class="section-title"><span class="it">Assistente AI</span><span class="en">AI Assistant</span></h2>
+      <p class="section-sub"><span class="it">Il chatbot integra il modello Claude di Anthropic direttamente nella dashboard, permettendo agli operatori di interrogare dati di sensori, alert e widget in linguaggio naturale, con risposte in streaming token per token.</span><span class="en">The chatbot integrates Anthropic's Claude model directly into the dashboard, allowing operators to query sensor data, alerts and widgets in natural language, with responses streamed token by token.</span></p>
+    </div>
+
+    <!-- Feature cards -->
+    <div class="grid-3" data-aos="fade-up">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:12px;">💬</div>
+        <h4 style="margin-bottom:8px;"><span class="it">Linguaggio Naturale</span><span class="en">Natural Language</span></h4>
+        <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:0;"><span class="it">Nessun SQL, nessuna query: l'operatore fa domande sui propri dati come in una chat. Il backend costruisce il contesto dai widget e dalle ultime metriche della location.</span><span class="en">No SQL, no queries: the operator asks questions about their data like in a chat. The backend builds context from the location's widgets and latest metrics.</span></p>
+        <div class="chatbot-example-q">
+          <span class="it">"Quanti parcheggi liberi ci sono adesso?"</span><span class="en">"How many parking spots are free right now?"</span>
+        </div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:12px;">⚡</div>
+        <h4 style="margin-bottom:8px;"><span class="it">Streaming in Tempo Reale</span><span class="en">Real-Time Streaming</span></h4>
+        <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:0;"><span class="it">La risposta arriva progressivamente token per token tramite Server-Sent Events, esattamente come ChatGPT. Nessuna attesa per l'intera elaborazione.</span><span class="en">The response arrives progressively token by token via Server-Sent Events, exactly like ChatGPT. No waiting for the full response to be computed.</span></p>
+        <div class="chatbot-example-q">Claude API → SSE → React stream UI</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:12px;">🔒</div>
+        <h4 style="margin-bottom:8px;"><span class="it">Scoped per Organizzazione</span><span class="en">Organization-Scoped</span></h4>
+        <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:0;"><span class="it">Il modello vede solo i dati dell'organizzazione corrente. Ogni org ha un budget giornaliero di richieste per controllare i costi.</span><span class="en">The model only sees data for the current organization. Each org has a daily request budget to control costs.</span></p>
+        <div class="chatbot-example-q">
+          <code>bots_enabled</code> · <code>bots_usage_today</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screenshot / immagine allegabile -->
+    <div class="chatbot-shot-wrap" data-aos="zoom-in">
+      <img src="assets/screenshots/chatbot.PNG"
+           alt="Chatbot AI Aivia"
+           class="chatbot-shot-img"
+           onerror="this.parentElement.classList.add('chatbot-no-img')">
+      <div class="chatbot-shot-ph">
+        <p style="font-size:2.8rem;margin:0 0 12px;">🤖</p>
+        <p style="font-weight:600;margin:0 0 6px;color:var(--text);"><span class="it">Screenshot non ancora caricato</span><span class="en">Screenshot not loaded yet</span></p>
+        <p style="font-size:0.8rem;margin:0;"><span class="it">Aggiungi l'immagine in</span><span class="en">Add the image to</span> <code>assets/screenshots/chatbot.PNG</code></p>
+      </div>
+    </div>
+
+    <!-- Flusso tecnico -->
+    <h3 style="color:var(--text);margin-bottom:16px;" data-aos="fade-up">
+      <span class="it">Flusso Tecnico</span><span class="en">Technical Flow</span>
+    </h3>
+    <div class="chatbot-flow-outer" data-aos="fade-up">
+      <div class="chatbot-flow">
+        <div class="chatbot-flow-step"><span class="it">Domanda utente</span><span class="en">User question</span></div>
+        <span class="chatbot-flow-arrow">→</span>
+        <div class="chatbot-flow-step"><span class="it">Fetch widget + metriche</span><span class="en">Fetch widgets + metrics</span></div>
+        <span class="chatbot-flow-arrow">→</span>
+        <div class="chatbot-flow-step">Claude API (context + query)</div>
+        <span class="chatbot-flow-arrow">→</span>
+        <div class="chatbot-flow-step">SSE stream</div>
+        <span class="chatbot-flow-arrow">→</span>
+        <div class="chatbot-flow-step"><span class="it">Risposta progressiva</span><span class="en">Progressive response</span></div>
+      </div>
+    </div>
+
+    <div class="info-box" data-aos="fade-up">
+      <strong><span class="it">Cosa può rispondere il chatbot</span><span class="en">What the chatbot can answer</span>:</strong>
+      <span class="it"> stato attuale dei sensori, storico delle ultime ore, alert attivi, confronto tra location, riepilogo della dashboard e suggerimenti operativi basati sui dati in tempo reale.</span>
+      <span class="en"> current sensor status, recent hours history, active alerts, location comparison, dashboard summary and operational suggestions based on real-time data.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  7. SENSORI E IoT                                         -->
 <!-- ══════════════════════════════════════════════════════════ -->
 <section id="sensori">
   <div class="container">
@@ -900,9 +979,9 @@ async function enterFullscreen(containerEl) {
             <td class="after"><span class="it">GitHub Actions: build, test, deploy, notify</span><span class="en">GitHub Actions: build, test, deploy, notify</span></td>
           </tr>
           <tr>
-            <td>AI Integration</td>
+            <td><span class="it">Chatbot AI (Claude API)</span><span class="en">AI Chatbot (Claude API)</span></td>
             <td class="before"><span class="it">Nessuna esperienza</span><span class="en">No experience</span></td>
-            <td class="after"><span class="it">Claude API, OpenAI, streaming Socket.IO</span><span class="en">Claude API, OpenAI, Socket.IO streaming</span></td>
+            <td class="after"><span class="it">Claude API, streaming SSE token-by-token, context injection da dati real-time, budget per org</span><span class="en">Claude API, SSE token-by-token streaming, real-time data context injection, per-org usage budget</span></td>
           </tr>
         </tbody>
       </table>
@@ -955,6 +1034,10 @@ async function enterFullscreen(containerEl) {
         <div class="skill-item" data-skill="60">
           <div class="skill-header"><span class="skill-name">CI/CD Pipelines</span><span class="skill-lvl"><span class="it">Base</span><span class="en">Basic</span></span></div>
           <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" data-skill="78">
+          <div class="skill-header"><span class="skill-name">Claude API / Chatbot AI</span><span class="skill-lvl"><span class="it">Intermedio</span><span class="en">Intermediate</span></span></div>
+          <div class="skill-track"><div class="skill-fill" style="background:linear-gradient(90deg,#a855f7,#6366f1);"></div></div>
         </div>
       </div>
     </div>
