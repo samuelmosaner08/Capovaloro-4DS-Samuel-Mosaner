@@ -428,7 +428,7 @@ ORDER BY ora ASC;</code></pre>
       <h3 style="color:var(--text);margin-bottom:8px;">
         <span class="it">Aggregazione per tipo di metrica</span><span class="en">Aggregation by metric type</span>
       </h3>
-      <table class="metrics-table">
+      <div class="tbl-scroll"><table class="metrics-table">
         <thead>
           <tr>
             <th><span class="it">Tipo</span><span class="en">Type</span></th>
@@ -445,7 +445,7 @@ ORDER BY ora ASC;</code></pre>
           <tr><td>METEO</td><td><span class="it">Media</span><span class="en">Average</span></td><td><span class="it">Temperatura/vento media</span><span class="en">Average temperature/wind</span></td></tr>
           <tr><td>OSCILLATIONS</td><td><span class="it">Somma</span><span class="en">Sum</span></td><td><span class="it">Oscillazioni strutturali totali</span><span class="en">Total structural oscillations</span></td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
   </div>
 </section>
@@ -485,19 +485,6 @@ ORDER BY ora ASC;</code></pre>
         <div class="chatbot-example-q">
           <code>bots_enabled</code> · <code>bots_usage_today</code>
         </div>
-      </div>
-    </div>
-
-    <!-- Screenshot / immagine allegabile -->
-    <div class="chatbot-shot-wrap" data-aos="zoom-in">
-      <img src="assets/screenshots/chatbot.PNG"
-           alt="Chatbot AI Aivia"
-           class="chatbot-shot-img"
-           onerror="this.parentElement.classList.add('chatbot-no-img')">
-      <div class="chatbot-shot-ph">
-        <p style="font-size:2.8rem;margin:0 0 12px;">🤖</p>
-        <p style="font-weight:600;margin:0 0 6px;color:var(--text);"><span class="it">Screenshot non ancora caricato</span><span class="en">Screenshot not loaded yet</span></p>
-        <p style="font-size:0.8rem;margin:0;"><span class="it">Aggiungi l'immagine in</span><span class="en">Add the image to</span> <code>assets/screenshots/chatbot.PNG</code></p>
       </div>
     </div>
 
@@ -622,7 +609,8 @@ ORDER BY ora ASC;</code></pre>
 
     <div class="divider" data-aos="fade-up"></div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;" data-aos="fade-up">
+    <div class="cam-detail-grid-wrap" data-aos="fade-up">
+    <div class="cam-detail-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
       <div>
         <h3 style="color:var(--text);margin-bottom:16px;"><span class="it">Controlli implementati</span><span class="en">Implemented controls</span></h3>
         <div class="grid-2" style="gap:12px;">
@@ -655,6 +643,7 @@ async function enterFullscreen(containerEl) {
   }
 }</code></pre>
       </div>
+    </div>
     </div>
   </div>
 </section>
